@@ -1,0 +1,70 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e8f5e9; /* Light green background */
+    color: #333;
+}
+
+.container {
+    max-width: 900px; /* Increased width for iPad and larger screens */
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: #2e7d32; /* Dark green color */
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.text-muted {
+    color: #7f8c8d !important;
+}
+
+#current-time-date {
+    font-size: 16px; /* Increased font size for better visibility on iPad */
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+#employeeDropdown {
+    width: 100%;
+    border: 1px solid #a5d6a7; /* Light green border */
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px; /* Increased font size */
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 18px; /* Increased font size */
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.view-records-btn {
+    display: block;
+    margin: 20px 0;
+    padding: 12px 15px;
+    background-color: #66bb6a; /* Green button */
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px; /* Increased font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-records-btn:hover {
+    background-color: #558b2f; /* Darker green on hover */
+}
