@@ -31,3 +31,4 @@ trio-websocket==0.10.2
 urllib3==1.26.15
 Werkzeug==3.0.0
 wsproto==1.2.0
+gunicorn
