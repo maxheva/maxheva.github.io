@@ -21,7 +21,7 @@ def proxy_endpoint():
         'StartDate': '2023-10-25',
         'EndDate': '2023-10-25'
     }
-    response = requests.post(api_url, data=data, headers=headers)
+    response = requests.post(api_url, data=data, headers=headers, verify=False)
 
     try:
         response_json = response.json()
@@ -31,4 +31,4 @@ def proxy_endpoint():
     return jsonify(response_json), response.status_code
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
