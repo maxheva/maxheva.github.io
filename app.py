@@ -6,14 +6,11 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
-cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
-
 @app.route('/')
 def index():
     return render_template("index.html")
 
 @app.route('/api/proxy', methods=['POST'])
-@cache.cached(timeout=300)
 def proxy_endpoint():
     logging.info("Proxy endpoint called.")
     
