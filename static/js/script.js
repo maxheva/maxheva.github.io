@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     populateEmployeeDropdown();
     updateCurrentTimeDate();
+    updateLastRefreshedTime();
     setInterval(updateCurrentTimeDate, 1000);  // Update current time and date every second
 });
 
@@ -106,11 +107,23 @@ function adjustTimeForDisplay(time) {
     };
 }
 
-
 function updateCurrentTimeDate() {
     const currentTimeDateElement = document.getElementById('current-time-date');
     if (currentTimeDateElement) {
         const now = new Date();
         currentTimeDateElement.textContent = `Current Time: ${now.toLocaleTimeString()} | Current Date: ${now.toLocaleDateString()}`;
     }
+}
+
+function updateLastRefreshedTime() {
+    // Set the current time as the last refreshed time
+    const now = new Date();
+    document.getElementById('last-refreshed').textContent = now.toLocaleTimeString();
+
+    // Update the time elapsed every second
+    //let secondsElapsed = 0;
+    //setInterval(() => {
+       // secondsElapsed += 1;
+        //document.getElementById('time-elapsed').textContent = secondsElapsed;
+    //}, 1000);
 }

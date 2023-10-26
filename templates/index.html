@@ -10,20 +10,17 @@
 </head>
 <body>
     <div class="container my-5">
-    <div class="container my-5">
         <div class="text-center mb-5">
             <h2>Employee Punch Records Dashboard</h2>
             <p class="text-muted">Select your name and view today's punches</p>
             <p id="current-time-date"></p>
-
-            <!-- Select dropdown for employee names -->
-<select id="employeeDropdown" class="my-3">
-    <!-- Options will be dynamically added here -->
-</select>
-<h2> </h2>
-<button id="viewRecordsBtn" class="btn btn-primary">Click to View Records</button>
-
+            <p>Last refreshed: <span id="last-refreshed"></span></p>
+            <!-- <p>Time since last refresh: <span id="time-elapsed">0</span> seconds</p>
+            Select dropdown for employee names -->
+            <select id="employeeDropdown" class="my-3">
+                <!-- Options will be dynamically added here -->
             </select>
+            <button id="viewRecordsBtn" class="btn btn-primary">Click to View Records</button>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -43,4 +40,3 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
-
