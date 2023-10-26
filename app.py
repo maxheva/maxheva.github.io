@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import requests
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -14,13 +15,18 @@ def proxy_endpoint():
         'UTCTimeZone': 'Los_Angeles',
         'Content-Type': 'application/x-www-form-urlencoded'
     }
+
+    # Get the current date
+    current_date = datetime.now().strftime('%Y-%m-%d')
+
     data = {
         'RecordType': 'FacialRecognition',
         'UserType': 'All',
         'Area': 'Test',
-        'StartDate': '2023-10-25',
-        'EndDate': '2023-10-25'
+        'StartDate': current_date,
+        'EndDate': current_date
     }
+
     response = requests.post(api_url, data=data, headers=headers, verify=False)
 
     try:
