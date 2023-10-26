@@ -1,20 +1,28 @@
+/* Base Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #e8f5e9; /* Light green background */
     color: #333;
+    margin: 0;
+    padding: 0;
+    font-size: 16px; /* Base font size for responsive typography */
+    line-height: 1.5;
 }
 
+/* Centered Container */
 .container {
-    max-width: 900px; /* Increased width for iPad and larger screens */
+    max-width: 900px;
     margin: 30px auto;
     background-color: #fff;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
+/* Typography */
 h1, h2 {
-    color: #2e7d32; /* Dark green color */
+    color: #2e7d32;
+    margin-top: 0;
 }
 
 h2 {
@@ -26,45 +34,74 @@ h2 {
     color: #7f8c8d !important;
 }
 
+/* Current Time and Date */
 #current-time-date {
-    font-size: 16px; /* Increased font size for better visibility on iPad */
-    color: #7f8c8d;
-    margin-bottom: 20px;
+    font-size: 1.5rem; /* Increased font size */
+    color: #2e7d32; /* Dark green color for emphasis */
+    margin-bottom: 30px;
+    border-bottom: 2px solid #a5d6a7; /* A subtle bottom border for separation */
+    padding-bottom: 10px;
+    display: inline-block; /* To restrict the border to the content width */
+    font-weight: 500; /* Making the font slightly bolder */
+    letter-spacing: 0.05em; /* Spacing out the letters a bit for modernity */
 }
 
-#employeeDropdown {
+
+/* Dropdown styles */
+#employeeDropdown, #facilityDropdown {
     width: 100%;
-    border: 1px solid #a5d6a7; /* Light green border */
+    border: 1px solid #a5d6a7;
     border-radius: 5px;
     padding: 10px;
-    font-size: 18px; /* Increased font size */
+    font-size: 1.125rem;
     margin-bottom: 20px;
 }
 
+/* Punch Records List */
 .list-group-item {
     border: none;
     border-bottom: 1px solid #e0e0e0;
-    font-size: 18px; /* Increased font size */
+    font-size: 1.125rem;
 }
 
 .list-group-item:last-child {
     border-bottom: none;
 }
 
-.view-records-btn {
+/* Button styles */
+.view-records-btn, #viewRecordsBtn {
     display: block;
     margin: 20px 0;
     padding: 12px 15px;
-    background-color: #66bb6a; /* Green button */
+    background-color: #66bb6a;
     color: #fff;
     text-align: center;
     border: none;
     border-radius: 5px;
-    font-size: 18px; /* Increased font size */
+    font-size: 1.125rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.view-records-btn:hover {
-    background-color: #558b2f; /* Darker green on hover */
+.view-records-btn:hover, #viewRecordsBtn:hover {
+    background-color: #558b2f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    #employeeDropdown, #facilityDropdown {
+        font-size: 1rem;
+    }
+
+    .list-group-item {
+        font-size: 1rem;
+    }
+
+    .view-records-btn, #viewRecordsBtn {
+        font-size: 1rem;
+    }
 }

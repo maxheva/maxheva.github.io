@@ -15,8 +15,24 @@
             <p class="text-muted">Select your name and view today's punches</p>
             <p id="current-time-date"></p>
             <p>Last refreshed: <span id="last-refreshed"></span></p>
-            <!-- <p>Time since last refresh: <span id="time-elapsed">0</span> seconds</p>
-            Select dropdown for employee names -->
+
+            <!-- Instructions and dropdown for medical facilities -->
+            <p>Step 1: Select Facility</p>
+            <select id="facilityDropdown" class="my-3">
+                <option value="PCC">PCC</option>
+                <option value="EC">EC</option>
+                <option value="FL">FL</option>
+                <option value="FF">FF</option>
+                <option value="SG">SG</option>
+                <option value="MM">MM</option>
+                <option value="MC">MC</option>
+                <option value="KC">KC</option>
+                <option value="FCC">FCC</option>
+                <option value="FM">FM</option>
+            </select>
+
+            <!-- Instructions and dropdown for employee names -->
+            <p>Step 2: Select Employee</p>
             <select id="employeeDropdown" class="my-3">
                 <!-- Options will be dynamically added here -->
             </select>
