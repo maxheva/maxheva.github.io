@@ -105,3 +105,10 @@ h2 {
         font-size: 1rem;
     }
 }
+
+.instruction-section {
+    padding: 20px;
+    border: 1px solid #a5d6a7; /* Light green border */
+    border-radius: 10px;
+    background-color: #f1f8e9; /* Very light green background */
+}

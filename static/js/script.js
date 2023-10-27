@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
     updateCurrentTimeDate();
     updateLastRefreshedTime();
     setInterval(updateCurrentTimeDate, 1000);  // Update current time and date every second
+
+    // Initialize select2 on employeeDropdown
+    $('#employeeDropdown').select2({
+        placeholder: 'Type to search...',
+        allowClear: true
+    });
 });
 
 const facilityToDeviceSNMapping = {
@@ -30,13 +36,21 @@ function populateEmployeeDropdown() {
 
                 const filteredByFacilityRecords = records.filter(record => relevantDeviceSNs.includes(record.DeviceSN));
                 const uniqueEmployeeNames = [...new Set(filteredByFacilityRecords.map(record => record.UserName))];
+                uniqueEmployeeNames.sort((a, b) => a.localeCompare(b));
 
                 employeeDropdown.innerHTML = ''; // Clear previous options
+                $('#employeeDropdown').select2('destroy');  // Destroy the current select2 instance
+
                 uniqueEmployeeNames.forEach(name => {
                     let option = document.createElement('option');
                     option.value = name;
                     option.textContent = name;
                     employeeDropdown.appendChild(option);
+                });
+
+                $('#employeeDropdown').select2({  // Re-initialize select2
+                    placeholder: 'Type to search...',
+                    allowClear: true
                 });
             });
 
@@ -111,9 +125,14 @@ function updateCurrentTimeDate() {
     }
 }
 
-// Button click event to display punch records
 const viewRecordsBtn = document.getElementById('viewRecordsBtn');
+const spinner = viewRecordsBtn.querySelector('.spinner-border');
 viewRecordsBtn.addEventListener('click', function() {
+    // Indicate loading
+    viewRecordsBtn.textContent = " Loading...";
+    spinner.style.display = 'inline-block';  // Show the spinner
+    viewRecordsBtn.disabled = true;
+
     const selectedFacility = document.getElementById('facilityDropdown').value;
     const relevantDeviceSNs = facilityToDeviceSNMapping[selectedFacility];
     const selectedEmployee = document.getElementById('employeeDropdown').value;
@@ -121,6 +140,19 @@ viewRecordsBtn.addEventListener('click', function() {
     fetchEmployeePunchRecords().then(records => {
         const filteredByFacilityRecords = records.filter(record => relevantDeviceSNs.includes(record.DeviceSN));
         displayPunchRecordsForEmployee(selectedEmployee, filteredByFacilityRecords);
+
+        // Revert button back to its original state
+        viewRecordsBtn.textContent = "Click to View Records";
+        spinner.style.display = 'none';  // Hide the spinner
+        viewRecordsBtn.disabled = false;
+        
+    }).catch(error => {
+        console.error("Failed to fetch records:", error);
+        
+        // If there's an error, revert button to its original state as well
+        viewRecordsBtn.textContent = "Click to View Records";
+        spinner.style.display = 'none';  // Hide the spinner
+        viewRecordsBtn.disabled = false;
     });
 });
 
