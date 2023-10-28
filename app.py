@@ -33,8 +33,11 @@ def proxy_endpoint():
         response_json = response.json()
     except ValueError:
         return jsonify({"error": "Invalid JSON response"}), 500
-
+    print(f"API Response: {response_json}")
+    print(f"Using current date: {current_date}")
     return jsonify(response_json), response.status_code
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
