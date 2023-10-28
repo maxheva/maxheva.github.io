@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify, render_template
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
+import pytz  # <- Import the pytz library
+
 
 app = Flask(__name__)
 
@@ -16,9 +18,18 @@ def proxy_endpoint():
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 
-    # Get the current date
-    current_date = datetime.now().strftime('%Y-%m-%d')
+   # Set the timezone to Los_Angeles
+    la_timezone = pytz.timezone('America/Los_Angeles')
+    current_date = datetime.now(la_timezone).strftime('%Y-%m-%d')
+    previous_date = (datetime.now(la_timezone) - timedelta(days=1)).strftime('%Y-%m-%d')
 
+    data = {
+        'RecordType': 'FacialRecognition',
+        'UserType': 'All',
+        'Area': 'Test',
+        'StartDate': previous_date,
+        'EndDate': current_date
+    }
     data = {
         'RecordType': 'FacialRecognition',
         'UserType': 'All',
@@ -33,11 +44,11 @@ def proxy_endpoint():
         response_json = response.json()
     except ValueError:
         return jsonify({"error": "Invalid JSON response"}), 500
+
     print(f"API Response: {response_json}")
     print(f"Using current date: {current_date}")
+
     return jsonify(response_json), response.status_code
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
